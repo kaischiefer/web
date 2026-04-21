@@ -1,212 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kai Schiefer Engineering LLC</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #111;
-      background: #f7f7f7;
-    }
-
-    header {
-      background: #0f172a;
-      color: white;
-      padding: 20px 40px;
-      position: sticky;
-      top: 0;
-    }
-
-    nav a {
-      color: white;
-      margin-right: 20px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    section {
-      padding: 60px 40px;
-      max-width: 1000px;
-      margin: auto;
-      background: white;
-      margin-top: 20px;
-      border-radius: 10px;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      color: white;
-      padding: 80px 40px;
-      border-radius: 0;
-    }
-
-    h1, h2 {
-      margin-top: 0;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      padding: 20px;
-      background: #f1f5f9;
-      border-radius: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-size: 14px;
-      color: #666;
-    }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
 
 <header>
   <nav>
-    <a href="#home">Home</a>
-    <a href="#engineering">Engineering LLC</a>
-    <a href="#projects">Projects</a>
-    <a href="#personal">Personal</a>
-    <a href="#contact">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
   </nav>
 </header>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <h1>Kai Schiefer Engineering LLC</h1>
-  <p>
-    Engineering consulting focused on embedded systems, EV electrical architecture,
-    and practical hardware/software integration.
-  </p>
+<section class="hero">
+  <div class="container">
+    <h1>Kai Schiefer Engineering LLC</h1>
+    <p>
+      Systems engineering consulting focused on embedded systems, EV electrical architecture,
+      and real-world hardware integration.
+    </p>
+    <a href="contact.html" class="btn">Start a Project</a>
+  </div>
 </section>
 
-<!-- ENGINEERING LLC -->
-<section id="engineering">
-  <h2>Engineering Consulting</h2>
-  <p>
-    Kai Schiefer Engineering LLC provides electrical and systems engineering consulting
-    services with a focus on real-world deployment of embedded systems, vehicle electrical
-    architecture, and control system integration.
-  </p>
+<section class="container">
+  <h2>What We Do</h2>
 
-  <div class="grid">
+  <div class="card-grid">
     <div class="card">
-      <h3>Vehicle Systems</h3>
-      <p>
-        Experience working with complex wiring harness design, modular electrical systems,
-        and integration concepts for electric and commercial fleet vehicles.
-      </p>
+      <h3>Vehicle Electrical Systems</h3>
+      <p>Harness design, modular architecture, and integration strategy for EV platforms.</p>
     </div>
 
     <div class="card">
       <h3>Embedded Systems</h3>
-      <p>
-        Raspberry Pi and microcontroller-based systems for real-time data acquisition,
-        logging, and connected device applications.
-      </p>
+      <p>Raspberry Pi / MCU systems for telemetry, control, and real-time data pipelines.</p>
     </div>
 
     <div class="card">
-      <h3>Consulting Focus</h3>
-      <p>
-        Supporting early-stage hardware teams with system architecture, prototyping,
-        and design validation.
-      </p>
+      <h3>Prototyping & Design</h3>
+      <p>Rapid iteration of mechanical + electrical systems with CAD and physical builds.</p>
     </div>
   </div>
 </section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <h2>Projects</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>EV Harness Design Work</h3>
-      <p>
-        Development of wiring harness architectures for electric commercial vehicles,
-        with emphasis on modularity, maintainability, and manufacturing scalability.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Raspberry Pi Telemetry System</h3>
-      <p>
-        Custom device for streaming and logging real-time data, designed similarly
-        to a lightweight automotive dash system.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Automotive + Motorcycle CAD Concept</h3>
-      <p>
-        Experimental CAD work combining performance automotive platforms with
-        motorcycle integration concepts for visualization and design exploration.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- PERSONAL -->
-<section id="personal">
-  <h2>Personal Work & Interests</h2>
-  <p>
-    Outside of engineering consulting, I spend time working on hands-on mechanical builds,
-    digital modeling, and personal experimentation with design and fabrication.
-  </p>
-
-  <div class="grid">
-    <div class="card">
-      <h3>3D Modeling</h3>
-      <p>
-        CAD modeling for vehicles and mechanical systems, focused on clean geometry
-        and functional prototyping concepts.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Cooking</h3>
-      <p>
-        Exploring practical cooking techniques with an engineering mindset—efficiency,
-        repeatability, and process optimization.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Hands-On Builds</h3>
-      <p>
-        Mechanical and electrical side projects that explore fabrication, embedded control,
-        and system integration.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-  <p>
-    For consulting inquiries or collaboration opportunities, reach out via email:
-  </p>
-  <p><strong>kai@kaischiefer.com</strong> (replace with your real email)</p>
-</section>
-
-<footer>
-  © 2026 Kai Schiefer Engineering LLC. All rights reserved.
-</footer>
 
 </body>
 </html>
