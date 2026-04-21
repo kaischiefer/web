@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact | Kai Schiefer Engineering LLC</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="container">
+
+<h1>Project Request Form</h1>
+
+<p>
+Describe your project and we’ll respond with scope, feasibility, and next steps.
+</p>
+
+<form action="https://formspree.io/f/YOUR_ID_HERE" method="POST">
+
+  <label>Name</label>
+  <input type="text" name="name" required>
+
+  <label>Email</label>
+  <input type="email" name="email" required>
+
+  <label>Company (optional)</label>
+  <input type="text" name="company">
+
+  <label>Project Type</label>
+  <input type="text" name="type" placeholder="EV systems, embedded, CAD, etc.">
+
+  <label>Project Description</label>
+  <textarea name="message" rows="6" required></textarea>
+
+  <button type="submit">Submit Request</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
