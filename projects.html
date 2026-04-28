@@ -1,720 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | Kai Schiefer Engineering LLC</title>
-  <meta name="description" content="A portfolio of mechatronics, vehicle systems, embedded controls, software, automation, and advanced manufacturing projects by Kai Schiefer Engineering LLC." />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css">
 
-  <!-- Page-specific styles. Move these into assets/styles.css later if preferred. -->
   <style>
-    :root {
-      --portfolio-accent: #4f8cff;
-      --portfolio-muted: #6b7280;
-      --portfolio-border: rgba(148, 163, 184, 0.28);
-      --portfolio-card: rgba(255, 255, 255, 0.72);
-      --portfolio-bg-soft: rgba(79, 140, 255, 0.08);
-      --portfolio-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
-    }
-
-    .portfolio-hero {
-      padding: 4rem 0 2.5rem;
-      max-width: 980px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.45rem;
-      margin-bottom: 1rem;
-      padding: 0.35rem 0.75rem;
-      border: 1px solid var(--portfolio-border);
-      border-radius: 999px;
-      color: var(--portfolio-muted);
-      font-size: 0.85rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .portfolio-hero h1 {
-      margin-bottom: 1rem;
-      font-size: clamp(2.25rem, 6vw, 4.75rem);
-      line-height: 0.98;
-      letter-spacing: -0.06em;
-    }
-
-    .portfolio-hero p {
-      max-width: 820px;
-      color: var(--portfolio-muted);
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      line-height: 1.65;
-    }
-
-    .portfolio-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      margin-top: 1.6rem;
-    }
-
-    .button-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0.75rem 1rem;
-      border-radius: 999px;
-      border: 1px solid var(--portfolio-border);
-      text-decoration: none;
-      font-weight: 650;
-    }
-
-    .button-link.primary {
-      border-color: var(--portfolio-accent);
-      background: var(--portfolio-accent);
-      color: #fff;
-    }
-
-    .portfolio-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      margin: 1rem 0 3rem;
-    }
-
-    .portfolio-nav a {
-      padding: 0.55rem 0.85rem;
-      border: 1px solid var(--portfolio-border);
-      border-radius: 999px;
-      color: inherit;
-      text-decoration: none;
-      font-size: 0.92rem;
-    }
-
-    .portfolio-section {
-      margin: 4rem 0;
-      scroll-margin-top: 2rem;
-    }
-
-    .section-heading {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--portfolio-border);
-    }
-
-    .section-heading h2 {
-      margin: 0;
-      font-size: clamp(1.65rem, 4vw, 2.6rem);
-      letter-spacing: -0.04em;
-    }
-
-    .section-heading p {
-      max-width: 520px;
-      margin: 0;
-      color: var(--portfolio-muted);
-      line-height: 1.55;
-    }
-
-    .project-grid {
+    .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
+      gap: 20px;
     }
 
-    .project-card {
-      position: relative;
+    .card {
+      background: #111;
+      border-radius: 10px;
       overflow: hidden;
-      min-height: 280px;
-      padding: 1.35rem;
-      border: 1px solid var(--portfolio-border);
-      border-radius: 24px;
-      background: var(--portfolio-card);
-      box-shadow: var(--portfolio-shadow);
+      transition: transform 0.2s ease;
     }
 
-    .project-card.featured {
-      grid-column: span 2;
-      min-height: 330px;
+    .card:hover {
+      transform: translateY(-5px);
     }
 
-    .project-card::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--portfolio-accent), transparent);
-      opacity: 0.9;
-    }
-
-    .project-card h3 {
-      margin: 0.65rem 0 0.65rem;
-      font-size: 1.35rem;
-      letter-spacing: -0.03em;
-    }
-
-    .project-card p {
-      margin: 0 0 1rem;
-      color: var(--portfolio-muted);
-      line-height: 1.55;
-    }
-
-    .project-meta {
+    .card-image {
+      width: 100%;
+      height: 180px;
+      background-color: #222;
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.45rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .tag {
-      display: inline-flex;
       align-items: center;
-      padding: 0.25rem 0.55rem;
-      border-radius: 999px;
-      background: var(--portfolio-bg-soft);
-      color: inherit;
-      font-size: 0.78rem;
-      font-weight: 650;
+      justify-content: center;
+      color: #666;
+      font-size: 14px;
     }
 
-    .project-list {
-      margin: 1rem 0 0;
-      padding-left: 1.1rem;
-      color: var(--portfolio-muted);
-      line-height: 1.55;
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .project-list li + li {
-      margin-top: 0.35rem;
+    .card-content {
+      padding: 15px;
     }
 
-    .impact {
-      margin-top: 1rem;
-      padding: 0.85rem;
-      border-radius: 16px;
-      background: rgba(15, 23, 42, 0.04);
-      color: inherit;
-      font-size: 0.95rem;
-      line-height: 1.45;
-    }
-
-    .compact-card {
-      min-height: auto;
-    }
-
-    .portfolio-note {
-      margin: 4rem 0 2rem;
-      padding: 1.4rem;
-      border: 1px solid var(--portfolio-border);
-      border-radius: 24px;
-      background: var(--portfolio-bg-soft);
-    }
-
-    @media (max-width: 780px) {
-      .project-card.featured {
-        grid-column: span 1;
-      }
-
-      .section-heading {
-        display: block;
-      }
-
-      .section-heading p {
-        margin-top: 0.65rem;
-      }
+    .section-title {
+      margin-top: 40px;
+      margin-bottom: 15px;
     }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav aria-label="Primary navigation">
-      <a href="index.html">Home</a>
-      <a href="consulting.html">Consulting</a>
-      <a href="projects.html" aria-current="page">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <main class="container">
-    <section class="portfolio-hero">
-      <span class="eyebrow">Portfolio • Mechatronics • Vehicle Systems • Automation</span>
-      <h1>Engineering systems that move from concept to working hardware.</h1>
-      <p>
-        A selected portfolio of vehicle systems, embedded controls, software platforms, automation projects,
-        advanced manufacturing work, and mobility research. These projects reflect an end-to-end approach:
-        define the problem, design the system, prototype quickly, validate in the real world, and improve it.
-      </p>
-      <div class="portfolio-actions">
-        <a class="button-link primary" href="contact.html">Start a project</a>
-        <a class="button-link" href="consulting.html">View consulting services</a>
-      </div>
-    </section>
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="consulting.html">Consulting</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-    <nav class="portfolio-nav" aria-label="Project categories">
-      <a href="#flagship">Flagship Systems</a>
-      <a href="#vehicle">Vehicle & Mobility</a>
-      <a href="#software">Software & Data</a>
-      <a href="#robotics">Robotics & Academic Builds</a>
-      <a href="#research">Human Factors Research</a>
-      <a href="#leadership">Leadership & Industry</a>
-    </nav>
+<div class="container">
 
-    <section id="flagship" class="portfolio-section">
-      <div class="section-heading">
-        <h2>Flagship Systems</h2>
-        <p>High-complexity work across mechanical, electrical, embedded, software, and customer-facing product execution.</p>
-      </div>
+<h1>Selected Work</h1>
 
-      <div class="project-grid">
-        <article class="project-card featured" id="intelligent-fleet-security-control-system">
-          <div class="project-meta">
-            <span class="tag">Connected Vehicles</span>
-            <span class="tag">Embedded Systems</span>
-            <span class="tag">Mobile App</span>
-            <span class="tag">Fleet Security</span>
-          </div>
-          <h3>Intelligent Fleet Security & Control System</h3>
-          <p>
-            Developed a connected commercial vehicle platform combining remote access control, LTE-enabled security levels,
-            real-time alerts, camera integration, and automated deterrents.
-          </p>
-          <ul class="project-list">
-            <li>Built Flutter-based vehicle app architecture with Serverpod backend support.</li>
-            <li>Developed custom microcontroller hotspot for secure communication between app and vehicle systems.</li>
-            <li>Integrated key fob access, LTE alerts, 360° camera visibility, horn, strobe, and security workflows.</li>
-          </ul>
-          <div class="impact"><strong>Impact:</strong> Created a prototype platform for smart fleet security, vehicle control, and customer-facing connected vehicle demonstrations.</div>
-        </article>
+<!-- ================= FLAGSHIP ================= -->
+<h2 class="section-title">Flagship Systems</h2>
 
-        <article class="project-card featured" id="commercial-vehicle-upfit-systems">
-          <div class="project-meta">
-            <span class="tag">Vehicle Integration</span>
-            <span class="tag">Harnessing</span>
-            <span class="tag">Controls</span>
-            <span class="tag">Customer Programs</span>
-          </div>
-          <h3>Commercial Vehicle Upfit Systems</h3>
-          <p>
-            Designed and supported multi-OEM commercial vehicle integrations across specialty body platforms, EV platforms,
-            fleet demonstrations, and trade show builds.
-          </p>
-          <ul class="project-list">
-            <li><strong>Leer:</strong> Automated locking toolboxes, powered bedslide, timed lighting, and lock management.</li>
-            <li><strong>Morgan:</strong> Automatic roll-up doors, reverse safety enhancements, microphone integration, and 360° camera system.</li>
-            <li><strong>Morgan Olson / Rivian:</strong> Modified electric vans for Canadian postal electrical and mounting requirements.</li>
-          </ul>
-          <div class="impact"><strong>Impact:</strong> Delivered practical, customer-ready vehicle systems across multiple commercial platforms and business units.</div>
-        </article>
+<div class="card-grid">
 
-        <article class="project-card" id="2kw-vehicle-power-system">
-          <div class="project-meta">
-            <span class="tag">Power Systems</span>
-            <span class="tag">Grafana</span>
-            <span class="tag">Prototype Vehicle</span>
-          </div>
-          <h3>2kW Prototype Vehicle Power System</h3>
-          <p>
-            Designed, developed, and built a 2kW power system for a high-performance prototype vehicle, including analytics
-            and monitoring through Grafana dashboards.
-          </p>
-          <div class="impact"><strong>Impact:</strong> Reduced cost by more than $70k compared to an external quote.</div>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <!-- Replace src later -->
+      <img src="assets/images/fleet-security.jpg" alt="Fleet Security System">
+    </div>
+    <div class="card-content">
+      <h3>Fleet Security & Control System</h3>
+      <p>Full-stack vehicle system with LTE control, 360° cameras, and automated deterrents.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="intelligent-vehicle-door-system">
-          <div class="project-meta">
-            <span class="tag">ADAS</span>
-            <span class="tag">Accessibility</span>
-            <span class="tag">Team Lead</span>
-          </div>
-          <h3>Intelligent Self-Opening Vehicle Doors</h3>
-          <p>
-            Led a team of seven engineers to develop intelligent doors that recognized the driver and opened automatically,
-            improving accessibility and usability.
-          </p>
-          <div class="impact"><strong>Impact:</strong> Combined user recognition, vehicle automation, and accessibility-focused ADAS development.</div>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <img src="assets/images/upfit-systems.jpg" alt="Upfit Systems">
+    </div>
+    <div class="card-content">
+      <h3>Commercial Upfit Integrations</h3>
+      <p>Multi-OEM vehicle automation including lighting, locking, and safety systems.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="automated-urn-storage-system">
-          <div class="project-meta">
-            <span class="tag">Automation</span>
-            <span class="tag">Safety Interlocks</span>
-            <span class="tag">Mechanisms</span>
-          </div>
-          <h3>Automated Electromechanical Transport System</h3>
-          <p>
-            Designed an automated urn storage system with motorized transport, synchronized divider motion, and integrated
-            safety features for reliable operation.
-          </p>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <img src="assets/images/power-system.jpg" alt="Power System">
+    </div>
+    <div class="card-content">
+      <h3>2kW Power System</h3>
+      <p>Custom-built vehicle power architecture with real-time analytics.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="fleet-trial-vehicle-programs">
-          <div class="project-meta">
-            <span class="tag">R&D</span>
-            <span class="tag">Prototype Builds</span>
-            <span class="tag">Field Feedback</span>
-          </div>
-          <h3>Fleet Trial Vehicle Development Programs</h3>
-          <p>
-            Led engineering support for fleet trial vehicles used for customer pilots, product validation, emerging technology
-            demonstrations, and rapid iteration based on real-world feedback.
-          </p>
-        </article>
-      </div>
-    </section>
+</div>
 
-    <section id="vehicle" class="portfolio-section">
-      <div class="section-heading">
-        <h2>Vehicle & Mobility Innovation</h2>
-        <p>Projects focused on electric mobility, vehicle architecture, lightweight structures, packaging, and real-world usability.</p>
-      </div>
+<!-- ================= SYSTEMS ================= -->
+<h2 class="section-title">Engineering Systems</h2>
 
-      <div class="project-grid">
-        <article class="project-card featured" id="ev-motorcycle-conversion">
-          <div class="project-meta">
-            <span class="tag">EV Conversion</span>
-            <span class="tag">Battery Systems</span>
-            <span class="tag">Controls</span>
-            <span class="tag">Personal Project</span>
-          </div>
-          <h3>EV Motorcycle Conversion — Honda 125cc Platform</h3>
-          <p>
-            Converted a Honda 125cc motorcycle platform toward electric propulsion, including battery system planning,
-            BMS integration, motor/controller selection, packaging, and mechanical integration.
-          </p>
-          <ul class="project-list">
-            <li>Custom battery pack and BMS architecture.</li>
-            <li>Brushless motor and controller integration.</li>
-            <li>Packaging and mounting work for a compact motorcycle chassis.</li>
-          </ul>
-        </article>
+<div class="card-grid">
 
-        <article class="project-card" id="human-powered-vehicle">
-          <div class="project-meta">
-            <span class="tag">Systems Engineering</span>
-            <span class="tag">CAD</span>
-            <span class="tag">Risk Management</span>
-          </div>
-          <h3>Hybrid Human-Powered Vehicle</h3>
-          <p>
-            Designed a hybrid-drive human-powered vehicle as a systems engineering and CAD project. The team created the
-            program's first four-wheel version, including exterior wind guards and formal risk mitigation planning.
-          </p>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <img src="assets/images/server.jpg" alt="Servers">
+    </div>
+    <div class="card-content">
+      <h3>Engineering Infrastructure</h3>
+      <p>Remote servers, NAS systems, and internal engineering tools.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="three-seat-electric-taxi">
-          <div class="project-meta">
-            <span class="tag">EV Concept</span>
-            <span class="tag">Chassis</span>
-            <span class="tag">Germany</span>
-          </div>
-          <h3>Three-Seat Electric Taxi Concept</h3>
-          <p>
-            Worked with a three-engineer team on a compact electric taxi concept designed around market whitespace,
-            efficiency, emissions reduction, and manufacturable packaging.
-          </p>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <img src="assets/images/3d-print.jpg" alt="3D Printing">
+    </div>
+    <div class="card-content">
+      <h3>Manufacturing Pipeline</h3>
+      <p>Managed FDM, SLA, and SLS workflows with automation tools.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="lightweight-vehicle-structures">
-          <div class="project-meta">
-            <span class="tag">Lightweighting</span>
-            <span class="tag">Vehicle Panels</span>
-            <span class="tag">Aerodynamics</span>
-          </div>
-          <h3>Flexible Lightweight Vehicle Exterior System</h3>
-          <p>
-            Collaborated with a German university to test flexible exterior vehicle technology with a focus on weight,
-            cost, aerodynamics, and aesthetics.
-          </p>
-          <div class="impact"><strong>Impact:</strong> Reduced weight by up to 67% per door and paneling costs by up to 80%.</div>
-        </article>
-      </div>
-    </section>
+</div>
 
-    <section id="software" class="portfolio-section">
-      <div class="section-heading">
-        <h2>Software, Data & Engineering Infrastructure</h2>
-        <p>Internal tooling, data platforms, remote infrastructure, simulation, and connected device systems.</p>
-      </div>
+<!-- ================= ROBOTICS ================= -->
+<h2 class="section-title">Robotics & Mechatronics</h2>
 
-      <div class="project-grid">
-        <article class="project-card featured" id="openpilot-simulation-platform">
-          <div class="project-meta">
-            <span class="tag">Docker</span>
-            <span class="tag">Autonomy</span>
-            <span class="tag">ML Server</span>
-          </div>
-          <h3>OpenPilot Autonomous Driving Simulation Platform</h3>
-          <p>
-            Integrated comma.ai's OpenPilot software into a Docker-based machine learning server environment and performed
-            benchmarking through autonomous vehicle simulation workflows.
-          </p>
-        </article>
+<div class="card-grid">
 
-        <article class="project-card" id="pyqt-reporting-platform">
-          <div class="project-meta">
-            <span class="tag">Python</span>
-            <span class="tag">PyQT</span>
-            <span class="tag">SQL</span>
-          </div>
-          <h3>Weekly Report Management App</h3>
-          <p>
-            Built a PyQT application for managing weekly engineering reports with SQL-based sorting, compression, and
-            structured data handling.
-          </p>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <img src="assets/images/grappling-robot.jpg" alt="Grappling Robot">
+    </div>
+    <div class="card-content">
+      <h3>Grappling Hook Robot</h3>
+      <p>RC robot capable of launching and actuating mechanical structures.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="rd-infrastructure-platform">
-          <div class="project-meta">
-            <span class="tag">Servers</span>
-            <span class="tag">SFTP</span>
-            <span class="tag">Apache</span>
-            <span class="tag">NAS</span>
-          </div>
-          <h3>R&D Remote Workstation & Server Infrastructure</h3>
-          <p>
-            Built four remote workstations and servers that provided network-attached storage, secure software access,
-            SFTP workflows, and Apache-hosted intranet resources.
-          </p>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <img src="assets/images/solar-tracker.jpg" alt="Solar Tracker">
+    </div>
+    <div class="card-content">
+      <h3>Solar Tracking System</h3>
+      <p>Sensor-driven solar optimization platform.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="advanced-manufacturing-pipeline">
-          <div class="project-meta">
-            <span class="tag">FDM</span>
-            <span class="tag">SLA</span>
-            <span class="tag">SLS</span>
-            <span class="tag">Docker</span>
-          </div>
-          <h3>Advanced Manufacturing & 3D Printing Pipeline</h3>
-          <p>
-            Managed throughput for internal and external additive manufacturing across FDM, SLA, and SLS workflows, including
-            CAD, slicing, post-processing, printer maintenance, modification, and Docker-based Obico management.
-          </p>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <img src="assets/images/ball-sorter.jpg" alt="Ball Sorter">
+    </div>
+    <div class="card-content">
+      <h3>Autonomous Ball Sorter</h3>
+      <p>Color-based sorting system with mechanical linkage design.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="raspberry-pi-streaming-system">
-          <div class="project-meta">
-            <span class="tag">Raspberry Pi</span>
-            <span class="tag">Streaming</span>
-            <span class="tag">WiFi AP</span>
-          </div>
-          <h3>Raspberry Pi Streaming & Telemetry System</h3>
-          <p>
-            Built an in-progress Raspberry Pi 4B architecture for WiFi access point operation, livestream hosting, and
-            dashcam-style mobile app integration.
-          </p>
-        </article>
+</div>
 
-        <article class="project-card" id="multi-sensor-data-platform">
-          <div class="project-meta">
-            <span class="tag">Sensors</span>
-            <span class="tag">Data Acquisition</span>
-            <span class="tag">Vehicle Testing</span>
-          </div>
-          <h3>Multi-Sensor Vehicle Data Collection Platform</h3>
-          <p>
-            Managed a team of engineers to build a multi-sensor data collection system for quantitative analysis of test
-            vehicle trips and real-world vehicle behavior.
-          </p>
-        </article>
-      </div>
-    </section>
+<!-- ================= VEHICLES ================= -->
+<h2 class="section-title">Vehicle Innovation</h2>
 
-    <section id="robotics" class="portfolio-section">
-      <div class="section-heading">
-        <h2>Robotics, Controls & Academic Builds</h2>
-        <p>Hands-on mechatronics projects combining mechanical design, embedded control, mechanisms, and rapid prototyping.</p>
-      </div>
+<div class="card-grid">
 
-      <div class="project-grid">
-        <article class="project-card" id="grappling-hook-rc-robot">
-          <div class="project-meta">
-            <span class="tag">Robotics</span>
-            <span class="tag">Mechanisms</span>
-            <span class="tag">RC Control</span>
-          </div>
-          <h3>Grappling Hook Launching RC Robot</h3>
-          <p>
-            Designed an RC robot capable of launching a grappling hook and pulling down drawbridge-style mechanisms through
-            controlled mechanical force and remote operation.
-          </p>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <img src="assets/images/ev-bike.jpg" alt="EV Motorcycle">
+    </div>
+    <div class="card-content">
+      <h3>EV Motorcycle Conversion</h3>
+      <p>Custom battery + motor integration on Honda platform.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="solar-tracking-panel">
-          <div class="project-meta">
-            <span class="tag">Solar</span>
-            <span class="tag">Controls</span>
-            <span class="tag">Energy</span>
-          </div>
-          <h3>Solar Tracking Solar Panel</h3>
-          <p>
-            Developed a solar tracking panel using sensor feedback and actuation to improve energy capture by keeping the
-            panel aligned with the sun.
-          </p>
-        </article>
+  <div class="card">
+    <div class="card-image">
+      <img src="assets/images/hpv.jpg" alt="HPV">
+    </div>
+    <div class="card-content">
+      <h3>4-Wheel HPV</h3>
+      <p>First 4-wheel human-powered vehicle design with aero integration.</p>
+    </div>
+  </div>
 
-        <article class="project-card" id="auto-ball-catcher-sorter">
-          <div class="project-meta">
-            <span class="tag">Arduino</span>
-            <span class="tag">Color Sorting</span>
-            <span class="tag">Linkages</span>
-          </div>
-          <h3>Automated Ball Catcher & Color Sorter</h3>
-          <p>
-            Built an Arduino-controlled system that caught and sorted balls by color using a multi-bar linkage mechanism,
-            sensors, and embedded control logic.
-          </p>
-        </article>
+</div>
 
-        <article class="project-card" id="autonomous-plant-health-regulator">
-          <div class="project-meta">
-            <span class="tag">Arduino</span>
-            <span class="tag">Sensors</span>
-            <span class="tag">IoT</span>
-          </div>
-          <h3>Autonomous Plant Health Regulator</h3>
-          <p>
-            Created a concept for an Arduino Nano-based plant monitoring system using soil hygrometers and solar sensors,
-            with real-time mobile updates.
-          </p>
-        </article>
+</div>
 
-        <article class="project-card" id="mechanical-cad-exploration">
-          <div class="project-meta">
-            <span class="tag">CAD</span>
-            <span class="tag">Packaging</span>
-            <span class="tag">Concept Design</span>
-          </div>
-          <h3>Mechanical CAD Exploration</h3>
-          <p>
-            Produced experimental automotive and motorcycle integration concepts for packaging studies, mechanism layout,
-            and early-stage design exploration.
-          </p>
-        </article>
-
-        <article class="project-card" id="custom-fixtures">
-          <div class="project-meta">
-            <span class="tag">Fixture Design</span>
-            <span class="tag">Manufacturing</span>
-            <span class="tag">Testing</span>
-          </div>
-          <h3>Custom Fixture Design</h3>
-          <p>
-            Designed custom fixtures for manufacturing, assembly, testing, and prototyping applications where repeatability
-            and usability were critical.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="research" class="portfolio-section">
-      <div class="section-heading">
-        <h2>Human Factors, Safety & Research</h2>
-        <p>Research projects connecting vehicle automation, driver state monitoring, ergonomics, and quantitative analysis.</p>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card featured" id="driver-monitoring-system">
-          <div class="project-meta">
-            <span class="tag">Computer Vision</span>
-            <span class="tag">Driver Monitoring</span>
-            <span class="tag">Human Factors</span>
-          </div>
-          <h3>Driver Monitoring & Takeover Readiness Research</h3>
-          <p>
-            Developed a face tracking pipeline for autonomous vehicle driver state monitoring and studied the relationship
-            between driver attention, system trust, and takeover response time.
-          </p>
-          <ul class="project-list">
-            <li>Compared 2D and 3D tracking software accuracy.</li>
-            <li>Evaluated custom monitoring approaches against existing systems.</li>
-            <li>Studied geofencing awareness, seat position effects, and driver vigilance.</li>
-          </ul>
-        </article>
-
-        <article class="project-card" id="worker-biomechanics-tool">
-          <div class="project-meta">
-            <span class="tag">MATLAB</span>
-            <span class="tag">Ergonomics</span>
-            <span class="tag">Data Processing</span>
-          </div>
-          <h3>Automotive Worker Biomechanics Analysis Tool</h3>
-          <p>
-            Developed an interactive MATLAB GUI to predict postural data and participant stresses for automotive assembly
-            tasks, supported by processing more than 40 trials of 3D capture data.
-          </p>
-          <div class="impact"><strong>Impact:</strong> Supported task difficulty scoring intended to reduce workplace injury risk.</div>
-        </article>
-      </div>
-    </section>
-
-    <section id="leadership" class="portfolio-section">
-      <div class="section-heading">
-        <h2>Leadership, Teaching & Industry Presence</h2>
-        <p>Customer-facing engineering, technical communication, mentorship, and translating complex systems for broad audiences.</p>
-      </div>
-
-      <div class="project-grid">
-        <article class="project-card" id="trade-show-engineering-support">
-          <div class="project-meta">
-            <span class="tag">NTEA</span>
-            <span class="tag">ACT Expo</span>
-            <span class="tag">Fleet Expo</span>
-            <span class="tag">NFDA</span>
-          </div>
-          <h3>National Trade Show Engineering Support</h3>
-          <p>
-            Represented engineering at 10+ national trade shows as an on-site technical lead for product demonstrations,
-            customer interactions, troubleshooting, training, and market feedback.
-          </p>
-        </article>
-
-        <article class="project-card" id="engineering-program-leadership">
-          <div class="project-meta">
-            <span class="tag">Program Leadership</span>
-            <span class="tag">Mentorship</span>
-            <span class="tag">Product Development</span>
-          </div>
-          <h3>Engineering Program Leadership</h3>
-          <p>
-            Managed engineering programs from concept through prototyping and production while mentoring multidisciplinary
-            teams, supporting R&D, and aligning technical execution with customer needs.
-          </p>
-        </article>
-
-        <article class="project-card" id="engineering-marketing-content">
-          <div class="project-meta">
-            <span class="tag">Technical Writing</span>
-            <span class="tag">Sales Enablement</span>
-            <span class="tag">Product Strategy</span>
-          </div>
-          <h3>Engineering-Led Marketing & Technical Content</h3>
-          <p>
-            Created and reviewed technical marketing content, training material, and customer-facing product explanations
-            to bridge the gap between engineering features and buyer value.
-          </p>
-        </article>
-
-        <article class="project-card" id="technical-instruction">
-          <div class="project-meta">
-            <span class="tag">Teaching</span>
-            <span class="tag">Engineering Math</span>
-            <span class="tag">Communication</span>
-          </div>
-          <h3>Technical Instruction & Academic Tutoring</h3>
-          <p>
-            Taught and supported students in multivariable calculus, differential equations, linear algebra, and material
-            science for audiences ranging from individual tutoring to 200–500 student courses.
-          </p>
-        </article>
-      </div>
-    </section>
-
-  </main>
 </body>
 </html>
